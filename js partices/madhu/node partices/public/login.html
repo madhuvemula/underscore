@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title> cricket score detalis</title>
+	<script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+<form onsubmit="players(event)" id="playerdetalis">
+	<input type="text" name="names" placeholder="cricket player names" required>
+	<input type="date" name="year" placeholder="year" required>
+    <input type="text" name="score" placeholder="score" required>
+    <input type="submit" value="submit">
+    <input type="reset" name="reset">
+    <script >
+    	function players(event) {
+    		event.preventDefault();
+    		var a= document.getElementById('playerdetalis');
+    		const names= a[0].value;
+    		const score = a[2].value;
+    		const year= a[1].value;
+    		$.ajax({
+    			url:'/circketplayers';
+    			type: 'post';
+    			data:{names, score, year},
+    			sucess:function(result){
+    				console.log(result)
+    			}
+    		})
+    	}
+
+    </script>
+
+</form>
+</div>
+</body>
+</html>
